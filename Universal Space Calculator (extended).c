@@ -32,10 +32,6 @@ double orb_per (double MM, double OR)
 {
     return 2*Pi*sqrt((OR*OR*OR)/(G*MM));
 }
-double time_dila (double V)
-{
-    return 1/sqrt(1-((V*V)/(C*C)));
-}
 double schw_radius (double M)
 {
     return (2*G*M)/(C*C);
@@ -46,7 +42,7 @@ double luminosity (double R, double T)
 }
 int main()
 {
-    double m,MM,M,R,OR,T,V,SMA;
+    double m,MM,M,R,OR,T,SMA;
     int n=0;
     char s[20];
     printf("----------//Welcome to Universal Space Calculator\\\\----------\n\n");
@@ -167,16 +163,16 @@ int main()
             }
             printf("-------------------------------------------------------------\n");
             printf("Do you want to calculate more for planet \"%s\"?\n",s);
-            printf("0 - If you want to continue\n");
-            printf("1 - If you want to exit\n");
+            printf("1 - If you want to continue\n");
+            printf("0 - If you want to exit\n");
             printf("Make your choice: ");
             scanf("%d",&n);
-            if (n==0)
+            if (n==1)
             {
                 printf("Thanks for your choice\n");
                 continue;
             }
-            else if (n==1)
+            else if (n==0)
             {
                 printf("Thank you.\n");
                 break;
@@ -184,17 +180,17 @@ int main()
         }
         printf("\n-------------------------------------------------------------\n");
         printf("Do you want to calculate for another planet?\n");
-        printf("0 - Yes\n");
-        printf("1 - No\n");
+        printf("1 - Yes\n");
+        printf("0 - No\n");
         printf("Make your choice: ");
         scanf("%d",&n);
-        if (n==0)
+        if (n==1)
         {
             printf("Thanks for your choice\n");
             printf("-------------------------------------------------------------\n");
             continue;
         }
-        else if (n==1)
+        else if (n==0)
         {
             printf("Thank you.\n");
             break;
