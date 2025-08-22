@@ -4,6 +4,10 @@
 #define C 3e8
 #define Pi 3.14159
 #define Si 5.67e-8
+double mass (double R, double g)
+{
+    return (g*(R*R))/G;
+}
 double volume (double R)
 {
     return (4*Pi*R*R*R)/3;
@@ -42,7 +46,7 @@ double luminosity (double R, double T)
 }
 int main()
 {
-    double m,MM,M,R,OR,T,SMA;
+    double m,g,MM,M,R,OR,T;
     int n=0;
     char s[20];
     FILE *fp;
@@ -58,23 +62,34 @@ int main()
         printf("-------------------------------------------------------------\n");
         while (1)
         {
-            printf("1 - Planet's Volume (V)\n");
-            printf("2 - Planet's Density (d)\n");
-            printf("3 - Planet's Surface Gravity (g)\n");
-            printf("4 - Planet's Escape Velocity (Ve)\n");
-            printf("5 - Planet's Gravitational Potential Energy\n");
-            printf("6 - Planet's Gravitational Binding Energy\n");
-            printf("7 - Planet's Orbital Period\n");
-            printf("8 - Planet's Schwarzschild Radius\n");
-            printf("9 - Planet's Luminosity\n");
-            printf("0 - If you want to exit\n");
+            printf("1  -  Planet's Mass\n");
+            printf("2  -  Planet's Volume (V)\n");
+            printf("3  -  Planet's Density (d)\n");
+            printf("4  -  Planet's Surface Gravity (g)\n");
+            printf("5  -  Planet's Escape Velocity (Ve)\n");
+            printf("6  -  Planet's Gravitational Potential Energy\n");
+            printf("7  -  Planet's Gravitational Binding Energy\n");
+            printf("8  -  Planet's Orbital Period\n");
+            printf("9  -  Planet's Schwarzschild Radius\n");
+            printf("10 -  Planet's Luminosity\n");
+            printf("0  -  If you want to exit\n");
             printf("-------------------------------------------------------------\n");
             printf("Enter number according to your choice: ");
             scanf("%d",&n);
             printf("-------------------------------------------------------------\n");
-            if (n>=0 && n<=9)
+            if (n>=0 && n<=10)
             {
                 if (n==1)
+                {
+                    printf("Now give information according to your choice:\n");
+                    printf("Enter the planet's radius (m)  : ");
+                    scanf("%lf",&R);
+                    printf("Enter the planet's gravity (g) : ");
+                    scanf("%lf",&g);
+                    printf("Planet's Mass                  : %.2e kg\n",mass(R,g));
+                    fprintf(fp,"Planet's Mass                           : %.2e kg\n",mass(R,g));
+                }
+                else if (n==2)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's radius (m) : ");
@@ -82,7 +97,7 @@ int main()
                     printf("Planet's volume               : %.2e m^3\n",volume(R));
                     fprintf(fp,"Planet's volume                         : %.2e m^3\n",volume(R));
                 }
-                else if (n==2)
+                else if (n==3)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)  : ");
@@ -92,7 +107,7 @@ int main()
                     printf("Planet's density              : %.2e kg/m^3\n",density(M,R));
                     fprintf(fp,"Planet's density                        : %.2e kg/m^3\n",density(M,R));
                 }
-                else if (n==3)
+                else if (n==4)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)  : ");
@@ -102,7 +117,7 @@ int main()
                     printf("Planet's surface gravity      : %.2lf m/s^2\n",sur_grav(M,R));
                     fprintf(fp,"Planet's surface gravity                : %.2lf m/s^2\n",sur_grav(M,R));
                 }
-                else if (n==4)
+                else if (n==5)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)  : ");
@@ -112,7 +127,7 @@ int main()
                     printf("Planet's escape velocity      : %.2lf km/s\n",esc_valo(M,R)/1000);
                     fprintf(fp,"Planet's escape velocity                : %.2lf km/s\n",esc_valo(M,R)/1000);
                 }
-                else if (n==5)
+                else if (n==6)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)            : ");
@@ -124,7 +139,7 @@ int main()
                     printf("Planet's gravitational potential energy : %.2e J\n",poten_energy(m,M,R));
                     fprintf(fp,"Planet's gravitational potential energy : %.2e J\n",poten_energy(m,M,R));
                 }
-                else if (n==6)
+                else if (n==7)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)          : ");
@@ -134,7 +149,7 @@ int main()
                     printf("Planet's gravitational binding energy : %.2e J\n",energy(M,R));
                     fprintf(fp,"Planet's gravitational binding energy   : %.2e J\n",energy(M,R));
                 }
-                else if (n==7)
+                else if (n==8)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter mass of the star            : ");
@@ -144,7 +159,7 @@ int main()
                     printf("Planet's orbital period           : %.2lf h\n",orb_per(MM,OR)/3600);
                     fprintf(fp,"Planet's orbital period                 : %.2lf h\n",orb_per(MM,OR)/3600);
                 }
-                else if (n==8)
+                else if (n==9)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's mass (kg)  : ");
@@ -152,7 +167,7 @@ int main()
                     printf("Planet's schwarzschild radius : %.2e m\n",schw_radius(M));
                     fprintf(fp,"Planet's schwarzschild radius           : %.2e m\n",schw_radius(M));
                 }
-                else if (n==9)
+                else if (n==10)
                 {
                     printf("Now give information according to your choice:\n");
                     printf("Enter the planet's radius (m) : ");
@@ -226,6 +241,7 @@ int main()
         printf("%c",ch);
     }
     fclose(fp);
+    printf("\n-------------------------------------------------------------\n");
     return 0;
 }
 
