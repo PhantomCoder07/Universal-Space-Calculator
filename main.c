@@ -32,10 +32,6 @@ double orb_per (double MM, double OR)
 {
     return 2*Pi*sqrt((OR*OR*OR)/(G*MM));
 }
-double time_dila (double V)
-{
-    return 1/sqrt(1-((V*V)/(C*C)));
-}
 double schw_radius (double M)
 {
     return (2*G*M)/(C*C);
@@ -46,7 +42,7 @@ double luminosity (double R, double T)
 }
 int main()
 {
-    double m,MM,M,R,OR,T,V,SMA;
+    double m,MM,M,R,OR,T,SMA;
     char s[20];
     printf("Give Information about the Planet:\n");
     printf("-------------------------------------------------------------\n");
@@ -62,8 +58,6 @@ int main()
     scanf("%lf",&R);
     printf("Enter orbital radius (m)     : ");
     scanf("%lf",&OR);
-    printf("Enter the velocity (m/s)     : ");
-    scanf("%lf",&V);
     printf("Enter surface temperature (K): ");
     scanf("%lf",&T);
     printf("-------------------------------------------------------------\n");
