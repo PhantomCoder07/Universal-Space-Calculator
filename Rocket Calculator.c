@@ -144,5 +144,6 @@ int main()
         ch = getc(fp);
         printf("%c",ch);
     }
+    fclose(fp);
     return 0;
 }
