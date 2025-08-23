@@ -9,8 +9,8 @@ double velocity (double M, double R, double r)
 }
 double period (double M, double R, double r)
 {
-    double h=R+r;
-    return (2*Pi)*sqrt((h*h*h)/(G*M));
+    double H=R+r;
+    return (2*Pi)*sqrt((H*H*H)/(G*M));
 }
 double geo (double M, double R)
 {
@@ -123,3 +123,4 @@ int main()
     fclose(fp);
     return 0;
 }
+
